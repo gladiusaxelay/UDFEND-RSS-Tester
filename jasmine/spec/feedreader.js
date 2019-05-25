@@ -1,4 +1,3 @@
-
 $(function () {
     // Test suite for RSS feeeds
 
@@ -72,7 +71,7 @@ $(function () {
 
     describe('New Feed Selection', function () {
 
-        let content;
+        let previousContent, newContent;
 
         // Here we test that when the user selects another feed from the menu,
         // the site changes and shows this new feed. For this we fetch the 
@@ -81,15 +80,18 @@ $(function () {
             loadFeed(0, function () {
                 previousContent = $('.feed').text();
                 //console.log(previousContent);
-            });
-            loadFeed(1, function () {
-                done();
+
+                loadFeed(1, function () {
+                    newContent = $('.feed').text()
+                    done();
+                });
             });
         });
 
         it('should be different than the old feed', function () {
-            //console.log($('.feed').text());
-            expect($('.feed').text()).not.toBe(previousContent);
+            expect(newContent).not.toBe(previousContent);
+            console.log(newContent);
+            console.log(previousContent);
         });
 
     });
