@@ -66,7 +66,7 @@ $(function () {
         });
 
         it('must be > 0, AKA have something', function () {
-            expect($('.feed').find('.entry').length >= 1).toBe(true);
+            expect($('.feed .entry-link').length).toBeGreaterThan(1);
         });
     });
 
@@ -80,7 +80,7 @@ $(function () {
         beforeEach(function (done) {
             loadFeed(0, function () {
                 previousContent = $('.feed').text();
-                console.log(previousContent);
+                //console.log(previousContent);
             });
             loadFeed(1, function () {
                 done();
@@ -88,7 +88,7 @@ $(function () {
         });
 
         it('should be different than the old feed', function () {
-            console.log($('.feed').text());
+            //console.log($('.feed').text());
             expect($('.feed').text()).not.toBe(previousContent);
         });
 
